@@ -1,0 +1,119 @@
+paths:
+  # [POST] fee
+  /fee:
+    post:
+      tags:
+        - Fee
+      summary: Create Fee Configuration
+      consumes: application/json
+      produces: application/json
+      parameters:
+        - name: body
+          in: body
+          description: fee configurations to be saved
+          required: true
+          schema:
+            $ref: "#/definitions/fee"
+      responses:
+        200:
+          description: "Created"
+        400:
+          description: "Bad Request"
+        500:
+          description: Internal server error
+
+  #[POST] Compute transaction fee
+  /compute-transaction-fee:
+    post:
+      tags:
+        - Fee
+      summary: Compute Transaction Fee
+      consumes: application/json
+      produces: application/json
+      parameters:
+        - name: body
+          in: body
+          description: Transaction fee computation
+          required: true
+          schema:
+            $ref: "#/definitions/computeFee"
+      responses:
+        200:
+          description: "Applied fee details"
+        400:
+          description: "Bad Request"
+        404:
+          description: "No fee configuration found"
+        500:
+          description: "Internal server error"
+
+# --------------------------definitions--------------------------
+definitions:
+  fee:
+    type: object
+    required:
+      - FeeConfigurationSpec
+    properties:
+      FeeConfigurationSpec:
+        type: string
+        example: "LNPY1221 NGN * *(*) : APPLY PERC 1.4\nLNPY1222 NGN INTL CREDIT-CARD(VISA) : APPLY PERC 5.0"
+        description: valid fee configuration string
+
+  #customer details definition for fee computation
+  customerDetails:
+    required:
+      - BearsFee
+    properties:
+      ID:
+        type: string
+      EmailAddress:
+        type: string
+      FullName:
+        type: string
+      BearsFee:
+        type: boolean
+
+  #payment entity definition for fee computation
+  paymentEntity:
+    required:
+      - Type
+      - Country
+    properties:
+      ID:
+        type: string
+      Issuer:
+        type: string
+      Brand:
+        type: string
+      Number:
+        type: string
+      SixID:
+        type: string
+      Type:
+        type: string
+      Country:
+        type: string
+
+  computeFee:
+    type: object
+    required:
+      - Amount
+      - Currency
+      - CurrencyCountry
+      - Customer
+      - PaymentEntity
+    properties:
+      ID:
+        type: string
+      Amount:
+        type: integer
+      Currency:
+        type: string
+      CurrencyCountry:
+        type: string
+      Customer:
+        type: object
+        $ref: "#/definitions/customerDetails"
+      PaymentEntity:
+        type: object
+        $ref: "#/definitions/paymentEntity"

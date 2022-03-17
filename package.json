@@ -1,0 +1,36 @@
+{
+  "name": "lannister",
+  "version": "1.0.0",
+  "description": "API service for a fictional LannisterPay",
+  "main": "index.js",
+  "engines": {
+    "node": "16.0.0"
+  },
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "jest --forceExit --detectOpenHandles",
+    "dev": "nodemon index.js"
+  },
+  "jest": {
+    "testMatch": [
+      "**/?(*.)(spec|test).js?(x)"
+    ],
+    "verbose": true
+  },
+  "keywords": [],
+  "author": "Nwankwo Chinedum",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "jest": "^27.5.0",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  }
+}
