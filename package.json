@@ -4,7 +4,8 @@
   "description": "API service for a fictional LannisterPay",
   "main": "index.js",
   "engines": {
-    "node": "16.0.0"
+    "node": "16.0.0",
+    "npm": "8.5.3"
   },
   "scripts": {
     "start": "node ./index.js",
