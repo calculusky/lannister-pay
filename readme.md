@@ -14,7 +14,7 @@ The API supports the below functionality:
 #### Prerequisites
 
 * Node (Version 16.0.0)
-* NPM (Version 7.10.0)
+* NPM (Version 8.5.3)
 * Yarn (1.22.11)
 
 #### Set Up/Installation
