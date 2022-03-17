@@ -7,6 +7,10 @@ The API supports the below functionality:
 * Fee configuration creation
 * Calculate the applicable fee transaction based on the stored configuration
 
+#### API DOC. URL
+
+`https://nedusoft-320915.uc.r.appspot.com/api-docs`
+
 #### Prerequisites
 
 * Node (Version 16.0.0)
